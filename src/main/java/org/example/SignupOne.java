@@ -18,6 +18,7 @@ public class SignupOne extends JFrame implements ActionListener {
     SignupOne(){
 
         setLayout(null);
+        setTitle("NEW ACCOUNT APPLICATION FORM - PAGE 1");
 
         Random rand = new Random();
         randomNo = Math.abs(((rand.nextLong() % 9000L) + 1000L)); // to make the random number four digit
@@ -208,6 +209,9 @@ public class SignupOne extends JFrame implements ActionListener {
                 Conn c = new Conn();
                 String query = "insert into signup values('" + formno +"','" + name +"','" + fname +"','" + dob +"','" + gender +"','" + enmail +"','" + maritalStatus +"','" + address +"','"+ city +"','"+ state +"','" + pin +"')";
                 c.s.executeUpdate(query);
+
+                setVisible(false);
+                new SignupTwo(formno).setVisible(true);
             }
 
         } catch (Exception exception){

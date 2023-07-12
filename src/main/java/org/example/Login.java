@@ -88,7 +88,8 @@ public class Login extends JFrame implements ActionListener {
         } else if (e.getSource() == login) {
 
         } else if (e.getSource() == signup) {
-
+            setVisible(false); // to close the current frame
+            new SignupOne().setVisible(true); // create a object of the sign up class and set visible to true to display
         }
     }
     public static void main(String[] args){

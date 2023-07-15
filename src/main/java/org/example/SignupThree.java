@@ -12,7 +12,10 @@ public class SignupThree extends JFrame implements ActionListener {
     JCheckBox atmBox, internetBox, mobileBox, emailBox, chequeBox, eBox, declarationBox;
 
     JButton submit, cancel;
-    SignupThree(){
+
+    String formNo;
+    SignupThree(String formNo){
+        this.formNo = formNo;
         setLayout(null);
 
         setTitle("NEW ACCOUNT APPLICATION FORM - PAGE 3");
@@ -142,7 +145,7 @@ public class SignupThree extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args){
-        new SignupThree();
+        new SignupThree("");
     }
 
     @Override
@@ -182,11 +185,22 @@ public class SignupThree extends JFrame implements ActionListener {
                 facility = facility + "INTERNET BANKING ";
             }
             if(eBox.isSelected()){
-                facility = facility + "E-STATEMENT ";
+                facility = facility + "E-STATEMENT";
             }
 
-            try {
 
+            try {
+                if(accountType.equals("")){
+                    JOptionPane.showMessageDialog(null,"Account Type is Required");
+                } else {
+                    Conn connection = new Conn();
+                    String query = "insert into signupthree values('" + formNo +"','" + accountType +"','" + cardNum +"','" + pinNum +"','" + facility +"')";
+                    String loginQuery = "insert into login values('" + formNo +"','" + cardNum +"','" + pinNum +"')";
+                    connection.s.executeUpdate(query);
+                    connection.s.executeUpdate(loginQuery);
+                    JOptionPane.showMessageDialog(null, "Card Number: " + cardNum + "\n Pin: " + pinNum);
+
+                }
 
             } catch (Exception exception){
                 System.out.println(exception);

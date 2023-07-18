@@ -27,10 +27,12 @@ public class Transaction extends JFrame implements ActionListener {
 
         deposit = new JButton("Deposit");
         deposit.setBounds(170,415,150,30);
+        deposit.addActionListener(this);
         bg.add(deposit);
 
         withdrawal = new JButton("Cash Withdrawal");
         withdrawal.setBounds(355,415,150,30);
+        withdrawal.addActionListener(this);
         bg.add(withdrawal);
 
         fastcash = new JButton("Fast Cash");
@@ -69,6 +71,13 @@ public class Transaction extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == exit){
             System.exit(0);
+        } else if (e.getSource() == deposit) {
+            setVisible(false);
+            new Deposit(pin).setVisible(true);
+        } else if (e.getSource() == withdrawal) {
+            setVisible(false);
+            new Withdrawal(pin).setVisible(true);
+
         }
     }
 }

@@ -42,6 +42,7 @@ public class Transaction extends JFrame implements ActionListener {
 
         miniStatement = new JButton("MIni-Statement");
         miniStatement.setBounds(355,450,150,30);
+        miniStatement.addActionListener(this);
         bg.add(miniStatement);
 
         pinChange = new JButton("Pin Change");
@@ -90,6 +91,8 @@ public class Transaction extends JFrame implements ActionListener {
         } else if (e.getSource() == balance) {
             setVisible(false);
             new BalanceEnquiry(pin).setVisible(true);
+        } else if (e.getSource() == miniStatement) {
+            new MiniStatement(pin).setVisible(true);
         }
     }
 }

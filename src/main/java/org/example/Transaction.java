@@ -37,6 +37,7 @@ public class Transaction extends JFrame implements ActionListener {
 
         fastcash = new JButton("Fast Cash");
         fastcash.setBounds(170,450,150,30);
+        fastcash.addActionListener(this);
         bg.add(fastcash);
 
         miniStatement = new JButton("MIni-Statement");
@@ -78,6 +79,9 @@ public class Transaction extends JFrame implements ActionListener {
             setVisible(false);
             new Withdrawal(pin).setVisible(true);
 
+        } else if (e.getSource() == fastcash) {
+            setVisible(false);
+            new Fastcash(pin).setVisible(true);
         }
     }
 }
